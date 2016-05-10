@@ -10,19 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-   @IBOutlet weak var calcLabel   :UILabel!
+
     
     var firstValue = true
-    var lastOperator: operatorType?
     var result = Float()
     var currentOp = String()
     var currentNumber = Float()
-    
-
    
-    
-    
-//    var subTotal = true
+    var subTotal: Int?
     
     enum operatorType {
         case plus
@@ -30,6 +25,19 @@ class ViewController: UIViewController {
         case multiply
         case divide
     }
+    
+    var lastOperator: operatorType?
+    
+   @IBOutlet weak var calcLabel   :UILabel!
+
+    
+
+   
+    
+    
+  
+    
+  
     
     
     
@@ -44,25 +52,25 @@ class ViewController: UIViewController {
     
     
     @IBAction func plusPressed(button: UIButton) {
-        print("equals")
+        print("plus")
         print("num \(button.titleLabel!.text!)")
         calcLabel.text = calcLabel.text! + button.titleLabel!.text!
     }
     
     @IBAction func subtractPressed(button: UIButton) {
-        print("equals")
+        print("subtract")
         print("num \(button.titleLabel!.text!)")
         calcLabel.text = calcLabel.text! + button.titleLabel!.text!
     }
  
     @IBAction func multiplyPressed(button: UIButton) {
-        print("equals")
+        print("multiply")
         print("num \(button.titleLabel!.text!)")
         calcLabel.text = calcLabel.text! + button.titleLabel!.text!
     }
     
     @IBAction func dividePressed(button: UIButton) {
-        print("equals")
+        print("divide")
         print("num \(button.titleLabel!.text!)")
         calcLabel.text = calcLabel.text! + button.titleLabel!.text!
     }
@@ -72,28 +80,37 @@ class ViewController: UIViewController {
         print("equals")
                 print("num \(button.titleLabel!.text!)")
                 calcLabel.text = calcLabel.text! + button.titleLabel!.text!
+
     }
     
+//        calcLabel.text = "\(result!)"
+//        subTotal = nil
+//        firstValue = true
+//    }
     
-    @IBAction func clearCalulations(sender: AnyObject) {
-        calcLabel.text = "0"
-        firstValue = true
-    }
+    
+        
+
+    
+    
+//    @IBAction func clearCalulations(sender: AnyObject) {
+//        calcLabel.text = "0"
+//        firstValue = true
+//    }
     
    
     
-//    @IBAction func numberPressed(button: UIButton) {
-//        print("num \(button.titleLabel!.text!)")
-////        calcLabel.text = calcLabel.text! + button.titleLabel!.text!
-//        if firstValue {
-//            calcLabel.text = "1"
-//            firstValue = false
-//        } else {
-//            calcLabel.text = calcLabel.text! + "1"
-//            
-//        }
-//        
-//    }
+    @IBAction func numberPressed(button: UIButton) {
+        print("num \(button.titleLabel!.text!)")
+        if firstValue {
+            calcLabel.text = "1"
+            firstValue = false
+        } else {
+            calcLabel.text = calcLabel.text! + "1"
+            
+        }
+        
+    }
     
     @IBAction func pressNine(sender: AnyObject) {
         if firstValue {
@@ -174,7 +191,6 @@ class ViewController: UIViewController {
     @IBAction func pressZero(sender: AnyObject) {
         if firstValue {
             calcLabel.text = "0"
-            firstValue = false
         } else {
             calcLabel.text = calcLabel.text! + "0"
         }
@@ -184,49 +200,47 @@ class ViewController: UIViewController {
     //MARK: - Operator Variables
     
     
-    @IBAction func currentOp (sender: AnyObject) {
+//    @IBAction func currentOp (button: UIButton) {
+//
+//    
+//    switch currentOp {
+//        case "=":
+//            result = currentNumber
+//        case "+":
+//            result = result + currentNumber
+//        case "-":
+//            result = result - currentNumber
+//        case "*":
+//            result = result * currentNumber
+//        case "/":
+//            result = result / currentNumber
+//    default:
+//        print("error")
+//    
+//        }
+//        
+//        currentNumber = 0
+//        calcLabel.text = ("\(result)")
+//    }
+//        if (sender.titleLabel.text == "=") {
+//            result = 0
+    
+//        }
+//        currentOp = sender.title.text as String
+//        
+//    }
+//    
+    
+    
+    
 
-    
-    switch currentOp {
-        case "=":
-            result = currentNumber
-        case "+":
-            result = result + currentNumber
-        case "-":
-            result = result - currentNumber
-        case "*":
-            result = result * currentNumber
-        case "/":
-            result = result / currentNumber
-    default:
-        print("error")
-    
-        }
-    
-    }
-    
+
 
   
-//    currentOp = sender.titleLabel.text as String{
 
-
-    
-
-    
-    
-    
-    
-    
     
     //MARK: - Global Variables
     
-
-    
-    
-    
-    
-    //MARK: - Interactivity Methods
-
     
     
     //MARK: - Life Cycle Methods
@@ -235,6 +249,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         calcLabel.text = "0"
+
     }
 
     override func didReceiveMemoryWarning() {
